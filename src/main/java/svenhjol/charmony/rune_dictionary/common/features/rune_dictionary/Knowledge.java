@@ -30,6 +30,7 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
 
     /**
      * Add the word to the knowledge and return the new knowledge record.
+     *
      * @param word The word to add to the knowledge.
      * @return The new knowledge record.
      */
@@ -39,6 +40,7 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
 
     /**
      * Add the words to the knowledge and return the new knowledge record.
+     *
      * @param words The words to add to the knowledge.
      * @return The new knowledge record.
      */
@@ -54,7 +56,8 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
 
     /**
      * Save the knowledge record to a tag.
-     * Typically this is used when saving the world  data.
+     * Typically this is used when saving the world data.
+     *
      * @return The NBT representation of the knowledge.
      */
     public CompoundTag save() {
@@ -72,6 +75,7 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
     /**
      * Load the knowledge record from a tag.
      * Typically this is used when loading the world data.
+     *
      * @param tag NBT representation of the knowledge.
      * @return The knowledge record.
      */
