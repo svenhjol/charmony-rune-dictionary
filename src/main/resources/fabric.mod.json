@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "charmony-rune-dictionary",
+  "version": "${mod_version}",
+
+  "name": "Rune Dictionary",
+  "description": "Library mod to add rune words and player knowledge.",
+  "authors": [
+    "svenhjol"
+  ],
+  "icon": "assets/charmony-rune-dictionary/textures/gui/sprites/icon.png",
+  "license": "MIT",
+  "environment": "*",
+
+  "entrypoints": {
+    "main": [
+      "svenhjol.charmony.rune_dictionary.common.CommonInitializer"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "minecraft": "*",
+    "java": ">=21",
+    "fabric-api": "*",
+    "charmony": ">=${charmony_version}",
+    "charmony-api": ">=${api_version}"
+  },
+
+  "contact": {
+    "homepage": "https://charmony.dev/mods/${mod_id}",
+    "sources": "https://github.com/svenhjol/${mod_id}"
+  }
+}

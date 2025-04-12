@@ -1,0 +1,6 @@
+{
+  "pack": {
+    "description": "Rune Dictionary resources",
+    "pack_format": ${pack_version}
+  }
+}
