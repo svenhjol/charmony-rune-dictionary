@@ -78,6 +78,9 @@ public class Handlers extends Setup<RuneDictionary> {
 
         // Send the updated knowledge to the client.
         Networking.S2CKnowledge.send(player, updated);
+
+        // Debug message
+        words.forEach(w -> feature().log().debug("Taught `" + w + "` to " + player.getScoreboardName()));
     }
 
     /**
