@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.5
+
+- Add another emptiness check filter when reading knowledge from server state.
+
 ## 1.0.4
 
 - Minor text change to debug log.

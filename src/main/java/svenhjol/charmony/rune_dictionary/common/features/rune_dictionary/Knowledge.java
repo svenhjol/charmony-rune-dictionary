@@ -86,6 +86,7 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
         var locationStrings = tag.getList(WORDS_TAG).stream()
             .map(Tag::asString)
             .map(s -> s.orElse(""))
+            .filter(s -> !s.isEmpty())
             .toList();
 
         List<ResourceLocation> locations = new ArrayList<>();
