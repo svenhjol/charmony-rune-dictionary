@@ -18,10 +18,30 @@ import java.util.*;
 @SuppressWarnings("unused")
 public class Handlers extends Setup<RuneDictionary> {
     private static final Map<ResourceLocation, String> DICTIONARY = new HashMap<>();
-    private static final Map<Player, Knowledge> PLAYER_KNOWLEDGE = new HashMap<>();
+    private static final Map<Player, Knowledge> KNOWLEDGE = new HashMap<>();
 
     public Handlers(RuneDictionary feature) {
         super(feature);
+    }
+
+    /**
+     * Update the entire dictionary.
+     *
+     * @param dictionary Dictionary map.
+     */
+    public void setDictionary(Map<ResourceLocation, String> dictionary) {
+        DICTIONARY.clear();
+        DICTIONARY.putAll(dictionary);
+    }
+
+    /**
+     * Update a knowledge map entry.
+     *
+     * @param player Player to update.
+     * @param knowledge Knowledge to update.
+     */
+    public void setKnowledge(Player player, Knowledge knowledge) {
+        KNOWLEDGE.put(player, knowledge);
     }
 
     /**
@@ -45,6 +65,32 @@ public class Handlers extends Setup<RuneDictionary> {
     }
 
     /**
+     * Gets the rune word for the given registered object.
+     * Returns empty optional if the word is not in the dictionary or is an empty string.
+     *
+     * @param word Registered object.
+     * @return Rune word for the registered object, empty optional if not found.
+     */
+    public Optional<String> getRuneWord(ResourceLocation word) {
+        var runeWord = DICTIONARY.get(word);
+        if (runeWord == null) return Optional.empty();
+        return runeWord.isEmpty() ? Optional.empty() : Optional.of(runeWord);
+    }
+
+    /**
+     * True if the player knows the word.
+     *
+     * @param player Player to check.
+     * @param word Word to check
+     * @return True if the player knows the word.
+     */
+    public boolean knowsWord(Player player, ResourceLocation word) {
+        var knowledge = KNOWLEDGE.get(player);
+        if (knowledge == null) return false;
+        return knowledge.words().contains(word);
+    }
+
+    /**
      * Add the word to the player's knowledge.
      *
      * @param player The player to add the word to.
@@ -63,14 +109,14 @@ public class Handlers extends Setup<RuneDictionary> {
     public void learnWords(ServerPlayer player, List<ResourceLocation> words) {
         if (!(player.level() instanceof ServerLevel serverLevel)) return;
 
-        var knowledge = PLAYER_KNOWLEDGE.get(player);
+        var knowledge = KNOWLEDGE.get(player);
         if (knowledge == null) return;
 
         // Learn the words.
         var updated = knowledge.learnWords(words);
 
         // Update this handler's cache.
-        PLAYER_KNOWLEDGE.put(player, updated);
+        KNOWLEDGE.put(player, updated);
 
         // Update the server's saved state.
         var state = KnowledgeSavedData.getServerState(serverLevel.getServer());
@@ -95,11 +141,11 @@ public class Handlers extends Setup<RuneDictionary> {
             var state = KnowledgeSavedData.getServerState(serverLevel.getServer());
             var knowledge = state.getKnowledge(player);
 
-            // Update this player's knowledge.
-            PLAYER_KNOWLEDGE.put(player, knowledge);
-
             // Send the full dictionary to the client.
             syncDictionary(player);
+
+            // Update this player's knowledge.
+            setKnowledge(player, knowledge);
 
             // Send the player's knowledge to the client.
             syncKnowledge(player);
@@ -112,7 +158,7 @@ public class Handlers extends Setup<RuneDictionary> {
      * @param player The player to send the knowledge to.
      */
     public void syncKnowledge(ServerPlayer player) {
-        var knowledge = PLAYER_KNOWLEDGE.get(player);
+        var knowledge = KNOWLEDGE.get(player);
         if (knowledge != null) {
             Networking.S2CKnowledge.send(player, knowledge);
         }

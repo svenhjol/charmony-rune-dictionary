@@ -15,6 +15,9 @@
   "entrypoints": {
     "main": [
       "svenhjol.charmony.rune_dictionary.common.CommonInitializer"
+    ],
+    "client": [
+      "svenhjol.charmony.rune_dictionary.client.ClientInitializer"
     ]
   },
 
