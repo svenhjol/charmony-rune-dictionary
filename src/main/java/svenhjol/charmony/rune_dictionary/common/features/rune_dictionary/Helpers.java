@@ -87,7 +87,7 @@ public class Helpers {
 
                 // Write to debug log and output.
                 var converted = out.reverse().toString();
-                LOGGER.debug("Rune word generation. Original word: '" + input + "', converted: '" + converted + "'");
+                LOGGER.debug("(generateRunes) Word: '" + input + "', translation: '" + converted + "'");
                 return converted;
             }
 

@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.4
+
+- Minor text change to debug log.
+- Guard against adding empty resource locations to knowledge.
+
 ## 1.0.3
 
 - Add a method to get a rune word from the dictionary.

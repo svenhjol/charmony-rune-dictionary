@@ -47,6 +47,7 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
     public Knowledge learnWords(List<ResourceLocation> words) {
         var updated = new ArrayList<>(words());
         for (var word : words) {
+            if (word.toString().equals("minecraft:")) continue; // Don't store empty resource locations.
             if (!updated.contains(word)) {
                 updated.add(word);
             }
