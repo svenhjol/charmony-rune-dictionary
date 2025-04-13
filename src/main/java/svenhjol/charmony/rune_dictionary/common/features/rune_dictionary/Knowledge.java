@@ -6,7 +6,6 @@ import net.minecraft.core.UUIDUtil;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
-import net.minecraft.nbt.Tag;
 import net.minecraft.resources.ResourceLocation;
 
 import java.util.ArrayList;
@@ -63,13 +62,13 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
      */
     public CompoundTag save() {
         var tag = new CompoundTag();
-        var locationsList = new ListTag();
+        var wordsList = new ListTag();
         for (var entry : words) {
-            locationsList.add(StringTag.valueOf(entry.toString()));
+            wordsList.add(StringTag.valueOf(entry.toString()));
         }
         tag.store(UUID_TAG, UUIDUtil.CODEC, uuid());
         tag.putString(NAME_TAG, name());
-        tag.put(WORDS_TAG, locationsList);
+        tag.put(WORDS_TAG, wordsList);
         return tag;
     }
 
@@ -83,18 +82,20 @@ public record Knowledge(UUID uuid, String name, List<ResourceLocation> words) {
     public static Knowledge load(CompoundTag tag) {
         var uuid = tag.read(UUID_TAG, UUIDUtil.CODEC).orElse(null);
         var name = tag.getString(NAME_TAG).orElse("");
-        var locationStrings = tag.getList(WORDS_TAG).stream()
-            .map(Tag::asString)
-            .map(s -> s.orElse(""))
-            .filter(s -> !s.isEmpty())
-            .toList();
+        var list = tag.getListOrEmpty(WORDS_TAG);
 
-        List<ResourceLocation> locations = new ArrayList<>();
-
-        for (var str : locationStrings) {
-            locations.add(ResourceLocation.tryParse(str));
+        List<String> wordStrings = new ArrayList<>();
+        for (var i = 0; i < list.size(); i++) {
+            wordStrings.add(list.getStringOr(i, ""));
         }
 
-        return new Knowledge(uuid, name, locations);
+        List<ResourceLocation> words = new ArrayList<>();
+
+        for (var str : wordStrings) {
+            if (str.isEmpty()) continue;
+            words.add(ResourceLocation.tryParse(str));
+        }
+
+        return new Knowledge(uuid, name, words);
     }
 }

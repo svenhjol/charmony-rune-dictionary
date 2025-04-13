@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.6
+
+- Try alternative list parsing to work around nbt word load issue.
+
 ## 1.0.5
 
 - Add another emptiness check filter when reading knowledge from server state.
