@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.7
+
+- Add knownWords method to return all words for a given player.
+
 ## 1.0.6
 
 - Try alternative list parsing to work around nbt word load issue.

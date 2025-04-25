@@ -85,9 +85,18 @@ public class Handlers extends Setup<RuneDictionary> {
      * @return True if the player knows the word.
      */
     public boolean knowsWord(Player player, ResourceLocation word) {
+        return knownWords(player).contains(word);
+    }
+
+    /**
+     * Get a list of all known words for the given player.
+     * @param player Player to check.
+     * @return List of all known words (resourcelocations)
+     */
+    public List<ResourceLocation> knownWords(Player player) {
         var knowledge = KNOWLEDGE.get(player);
-        if (knowledge == null) return false;
-        return knowledge.words().contains(word);
+        if (knowledge == null) return List.of();
+        return knowledge.words();
     }
 
     /**
