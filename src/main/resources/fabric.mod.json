@@ -3,7 +3,7 @@
   "id": "charmony-rune-dictionary",
   "version": "${mod_version}",
 
-  "name": "Rune Dictionary",
+  "name": "Charmony Rune Dictionary",
   "description": "Library mod to add rune words and player knowledge.",
   "authors": [
     "svenhjol"

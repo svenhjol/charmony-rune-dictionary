@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.0.8
+
+- Add "Charmony" to the mod title so it lists in the correct place in ModMenu.
+
 ## 1.0.7
 
 - Add knownWords method to return all words for a given player.
