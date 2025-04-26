@@ -33,5 +33,14 @@
   "contact": {
     "homepage": "https://charmony.dev/mods/${mod_id}",
     "sources": "https://github.com/svenhjol/${mod_id}"
+  },
+
+  "custom": {
+    "modmenu": {
+      "links": {
+        "modmenu.discord": "${discord_link}"
+      },
+      "badges": ["library"]
+    }
   }
 }
