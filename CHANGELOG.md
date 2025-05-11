@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.0
+
+- Update for API 1.20
+
 ## 1.0.8
 
 - Add "Charmony" to the mod title so it lists in the correct place in ModMenu.

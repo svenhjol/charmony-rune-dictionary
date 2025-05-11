@@ -7,7 +7,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import svenhjol.charmony.api.RuneWordProvider;
+import svenhjol.charmony.api.rune_dictionary.RuneWordProvider;
 import svenhjol.charmony.core.Api;
 import svenhjol.charmony.core.base.Setup;
 import svenhjol.charmony.rune_dictionary.common.features.rune_dictionary.Networking.C2SRequestDictionary;
@@ -90,6 +90,7 @@ public class Handlers extends Setup<RuneDictionary> {
 
     /**
      * Get a list of all known words for the given player.
+     *
      * @param player Player to check.
      * @return List of all known words (resourcelocations)
      */
