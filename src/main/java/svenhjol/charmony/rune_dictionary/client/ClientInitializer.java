@@ -1,7 +1,7 @@
 package svenhjol.charmony.rune_dictionary.client;
 
 import net.fabricmc.api.ClientModInitializer;
-import svenhjol.charmony.core.enums.Side;
+import svenhjol.charmony.api.core.Side;
 import svenhjol.charmony.rune_dictionary.RuneDictionaryMod;
 import svenhjol.charmony.rune_dictionary.client.features.RuneDictionary;
 

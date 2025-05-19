@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.event.lifecycle.v1.ServerEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import svenhjol.charmony.core.base.Setup;
 import svenhjol.charmony.core.common.CommonRegistry;
-import svenhjol.charmony.core.enums.Side;
+import svenhjol.charmony.api.core.Side;
 import svenhjol.charmony.rune_dictionary.common.features.rune_dictionary.Networking.C2SRequestDictionary;
 import svenhjol.charmony.rune_dictionary.common.features.rune_dictionary.Networking.C2SRequestKnowledge;
 import svenhjol.charmony.rune_dictionary.common.features.rune_dictionary.Networking.S2CDictionary;
