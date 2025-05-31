@@ -11,8 +11,8 @@ public class Registers extends Setup<RuneDictionary> {
         var registry = ClientRegistry.forFeature(feature);
 
         registry.packetReceiver(Networking.S2CDictionary.TYPE,
-            () -> feature.handlers::handleDictionary);
+            feature.handlers::handleDictionary);
         registry.packetReceiver(Networking.S2CKnowledge.TYPE,
-            () -> feature.handlers::handleKnowledge);
+            feature.handlers::handleKnowledge);
     }
 }

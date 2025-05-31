@@ -17,8 +17,8 @@ public final class RuneDictionary extends SidedFeature {
     public RuneDictionary(Mod mod) {
         super(mod);
         common = Common::new;
-        registers = new Registers(this);
         handlers = new Handlers(this);
+        registers = new Registers(this);
     }
 
     public static RuneDictionary feature() {

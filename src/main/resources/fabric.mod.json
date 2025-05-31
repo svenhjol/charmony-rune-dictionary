@@ -8,7 +8,7 @@
   "authors": [
     "svenhjol"
   ],
-  "icon": "assets/charmony-rune-dictionary/textures/gui/sprites/icon.png",
+  "icon": "assets/charmony/textures/gui/sprites/charmony-rune-dictionary.png",
   "license": "MIT",
   "environment": "*",
 
